@@ -4,4 +4,4 @@ Machine Learning datasets
 
 ## List of Datasets
 
-1. [Abalone](abalone.csv)
+1. [Abalone](data/abalone.csv)
