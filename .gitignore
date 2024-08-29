@@ -164,3 +164,9 @@ cython_debug/
 
 # Ignore Local Raw datasets
 Datasets/
+Aquaponics/
+plants_datasets/
+
+# System
+.DS_Store
+
