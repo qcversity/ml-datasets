@@ -23,6 +23,7 @@ jobs:
           cd ML-Datasets
           git submodule update --remote --force
           cd ml-datasets
+          git checkout main 
           git merge --allow-unrelated-histories
 
       - name: List contents of ML-Datasets
