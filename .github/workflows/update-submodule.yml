@@ -17,10 +17,13 @@ jobs:
           token: ${{ secrets.PAT_DR_SAAD_LA }} 
           path: ML-Datasets
           submodules: True
+
       - name: Update Submodule (ml-datasets)
         run: |
           cd ML-Datasets
-          git submodule update --remote --merge  # Pull the latest changes from the submodule
+          git submodule update --remote --force
+          cd ml-datasets
+          git merge --allow-unrelated-histories
 
       - name: List contents of ML-Datasets
         run: ls ML-Datasets
