@@ -16,6 +16,12 @@ jobs:
           repository: dr-saad-la/ML-Datasets  
           token: ${{ secrets.PAT_DR_SAAD_LA }} 
           path: ML-Datasets
+          submodule: True
+      - name: Update Submodule (ml-datasets)
+        run: |
+          cd ML-Datasets
+          git submodule update --remote --merge  # Pull the latest changes from the submodule
+
       - name: List contents of ML-Datasets
         run: ls ML-Datasets
 
