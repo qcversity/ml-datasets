@@ -1,0 +1,36 @@
+name: Update ML-Datasets Submodule
+
+# Trigger the workflow when a push is made to the main branch of qcversity/ml-datasets
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  update-submodule:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the ML-Datasets Repository (dr-saad-la)
+      - name: Checkout ML-Datasets Repository
+        uses: actions/checkout@v2
+        with:
+          repository: dr-saad-la/ML-Datasets  # The repo where the submodule is added
+          token: ${{ secrets.PAT_DR_SAAD_LA }}  # The Personal Access Token (PAT) for authentication
+          path: ML-Datasets
+
+      # Step 2: Set up executable permissions for the script
+      - name: Make update_submodule.sh executable
+        run: chmod +x ML-Datasets/update_submodule.sh
+
+      # Step 3: Run the Submodule Update Script
+      - name: Run Submodule Update Script
+        run: ./ML-Datasets/update_submodule.sh
+
+      # Step 4: Configure Git for committing and pushing changes
+      - name: Commit and Push Changes
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+        env:
+          PAT_DR_SAAD_LA: ${{ secrets.PAT_DR_SAAD_LA }}  # The Personal Access Token (PAT) for pushing
