@@ -166,6 +166,7 @@ cython_debug/
 Datasets/
 Aquaponics/
 plants_datasets/
+detailed-da
 
 # System
 .DS_Store
